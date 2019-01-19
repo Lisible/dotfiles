@@ -1,0 +1,48 @@
+[colors]
+background = #d1e2c9
+foreground = #000
+focused-background = #b5c693 
+
+[bar/mainbar]
+modules-left = i3
+modules-right = date
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+padding-right = 2
+
+bottom = true
+
+[module/i3]
+type = internal/i3
+index-sort = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.focused-background}
+
+label-focused = %index%
+label-focused-background = ${colors.focused-background}
+label-focused-foreground = #fff
+label-focused-underline = #99aa77
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-padding = 2
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = 
+date-alt = %d-%m-%Y%
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label = %date% %time%
