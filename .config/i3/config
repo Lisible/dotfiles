@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -148,6 +148,8 @@ bindsym $mod+r mode "resize"
 # gaps
 for_window [class="^.*"] border pixel 0
 gaps inner 40
+
+exec_always --no-startup-id killall mpv
 
 # start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

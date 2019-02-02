@@ -1,2 +1,2 @@
 rofi.modi: window,run,ssh
-rofi.theme: gruvbox-light-hard
+rofi.theme: arc-dark
