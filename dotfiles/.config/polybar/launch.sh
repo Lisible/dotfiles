@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
-killall -q polybar
+kill $(pidof polybar)
 polybar mainbar &

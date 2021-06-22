@@ -1,7 +1,7 @@
 [colors]
-background = #112233
+background = #badeb2
+focused-background = #87e8c6
 foreground = #fff
-focused-background = #215182
 
 [bar/mainbar]
 modules-left = i3
@@ -15,6 +15,7 @@ foreground = ${colors.foreground}
 height = 30
 line-size = 3
 padding-right = 2
+radius = 5.0
 
 tray-position = right
 
