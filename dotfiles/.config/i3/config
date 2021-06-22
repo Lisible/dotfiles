@@ -153,8 +153,6 @@ exec_always --no-startup-id killall mpv
 
 # start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# start compton
-exec_always --no-startup-id neocomp -b
 
 # start animated wallpaper
 exec_always --no-startup-id xwinwrap -ov -g 1920x1080+0+0 -- mpv -wid WID /home/clements/Images/wp.gif --no-osc --no-osd-bar --loop-file --no-audio --panscan=1.0 --no-input-default-bindings
