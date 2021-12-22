@@ -1,0 +1,8 @@
+#!/bin/sh
+current_engine=$(ibus engine)
+if [ $current_engine == 'xkb:us:altgr-intl:eng' ]
+then
+  echo "EN"
+else
+  echo "JP"
+fi

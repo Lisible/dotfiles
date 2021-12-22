@@ -1,0 +1,47 @@
+#!/bin/sh
+
+next_bus() {
+    bus_stop_set=$(if [ -n "${bus_stop_downtown+x}" ] && [ -n "${bus_stop_nowhere+x}" ]; then echo "true"; else echo "false"; fi)
+    if
+	[ "$bus_stop_set" = "true" ];
+    then
+	echo "Buses: (To downtown: $(nextbus $bus_stop_downtown) | To nowhere: $(nextbus $bus_stop_nowhere)) | "
+    else
+	echo ""
+    fi
+}
+
+get_status_bar() { 
+    date=$(date "+%Y-%m-%d %H:%M:%S")
+    ram_usage=$(printf "%.0f" $(free | awk '/Mem:/ {print ($3+$5)/$2*100}'))
+    cpu_usage=$(printf "%.0f" $(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}'))
+    disk_used=$(df -lh | awk '{if ($6 == "/") { print $3 }}')
+    disk_used=${disk_used::-1}
+    disk_total=$(df -lh | awk '{if ($6 == "/") { print $2 }}')
+    muted=$(pamixer --get-mute)
+    volume=$(pamixer --get-volume)
+    volume_str=$(if [ $muted == "true" ]; then echo "muted"; else echo "${volume}%"; fi)
+    kbd_layout=$(keyboard-layout)
+
+    echo "${1}Keyboard layout: $kbd_layout | Volume: $volume_str [Disk: ${disk_used}/${disk_total}, CPU: ${cpu_usage}%, RAM: ${ram_usage}%] $date"
+}
+
+update_status_bar() {
+    bus_str=$(next_bus)
+    bus_update_start=$(date +%s)
+    while true; do
+	bus_update_end=$(date +%s)
+	if [ $(( bus_update_end - bus_update_start)) -gt 30 ]; then
+	    bus_str=$(next_bus)
+	    bus_update_start=$(date +%s)
+	fi
+	
+	status_bar=$(get_status_bar "$bus_str")
+	xsetroot -name "$status_bar"
+	sleep 5
+    done
+}
+
+
+update_status_bar
+
