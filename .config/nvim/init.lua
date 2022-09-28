@@ -24,6 +24,9 @@ vim.cmd([[colorscheme gruvbox]])
 vim.o.bg = "light"
 vim.api.nvim_set_hl(0, "Normal", { ctermbg = null })
 
+-- mouse
+vim.o.mouse = "a"
+
 -- show config
 vim.api.nvim_set_keymap('n', '<F2>', '<cmd>e ~/.config/nvim/init.lua<cr>', { noremap = true, silent = true })
 
@@ -32,6 +35,9 @@ vim.api.nvim_set_keymap('n', '<c-tab>', '<cmd>bn<cr>', { noremap = true, silent 
 vim.api.nvim_set_keymap('n', '<c-s-tab>', '<cmd>bp<cr>', { noremap = true, silent = true })
 
 -- PLUGINS
+
+-- navigator
+require('navigator').setup()
 
 -- lualine
 require('lualine').setup{
@@ -45,7 +51,7 @@ require('lualine').setup{
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {}
+        lualine_z = {{'windows', mode = 1 }}
     }
 }
 
