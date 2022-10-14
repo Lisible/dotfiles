@@ -36,9 +36,6 @@ vim.api.nvim_set_keymap('n', '<c-s-tab>', '<cmd>bp<cr>', { noremap = true, silen
 
 -- PLUGINS
 
--- navigator
-require('navigator').setup()
-
 -- lualine
 require('lualine').setup{
     options = {

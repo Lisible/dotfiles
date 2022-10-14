@@ -42,17 +42,8 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
     use 'rafamadriz/friendly-snippets'
     use 'andweeb/presence.nvim'
-    use({
-        'ray-x/navigator.lua',
-        requires = {
-            { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
-            { 'neovim/nvim-lspconfig' },
-        },
-    })
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
+    use 'tpope/vim-surround'
+    use 'xuhdev/vim-latex-live-preview'
 end)
 
 
