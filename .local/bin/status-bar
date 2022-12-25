@@ -22,8 +22,9 @@ get_status_bar() {
     volume=$(pamixer --get-volume)
     volume_str=$(if [ $muted == "true" ]; then echo "muted"; else echo "${volume}%"; fi)
     kbd_layout=$(keyboard-layout)
+    battery_level="$(cat /sys/class/power_supply/BAT0/capacity)%"
 
-    echo "${1}Keyboard layout: $kbd_layout | Volume: $volume_str [Disk: ${disk_used}/${disk_total}, CPU: ${cpu_usage}%, RAM: ${ram_usage}%] $date"
+    echo "${1}Keyboard layout: $kbd_layout | Volume: $volume_str [Disk: ${disk_used}/${disk_total}, CPU: ${cpu_usage}%, RAM: ${ram_usage}%] Battery: $battery_level  $date"
 }
 
 update_status_bar() {
