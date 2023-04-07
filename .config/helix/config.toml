@@ -1,0 +1,5 @@
+theme = "ayu_dark_transparent"
+
+[editor]
+line-number = "relative"
+mouse = false
