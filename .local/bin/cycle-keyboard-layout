@@ -1,0 +1,12 @@
+#!/bin/sh
+current_engine=$(ibus engine)
+if [ $current_engine == "mozc-jp" ]
+then
+  ibus engine "xkb:us::eng"
+elif [ $current_engine == "xkb:us::eng" ]
+then
+  ibus engine "xkb:fr::fra"
+else
+  ibus engine "mozc-jp"
+fi
+
