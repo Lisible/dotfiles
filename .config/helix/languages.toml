@@ -1,0 +1,11 @@
+[[language]]
+name = "c"
+auto-format = true
+file-types = ["c", "h"]
+formatter = { command = "clang-format" }
+
+[[language]]
+name = "html"
+auto-format = true
+file-types = ["html"]
+formatter = { command = "prettier --parser html"}
